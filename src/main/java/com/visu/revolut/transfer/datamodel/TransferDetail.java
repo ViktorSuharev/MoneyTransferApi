@@ -1,25 +1,26 @@
 package com.visu.revolut.transfer.datamodel;
 
 import java.math.BigDecimal;
+import java.math.BigInteger;
 
 public class TransferDetail {
-    private String accountSender;
-    private String accountReceiver;
+    private BigInteger accountSender;
+    private BigInteger accountReceiver;
     private BigDecimal transferAmount;
 
-    public String getAccountSender() {
+    public BigInteger getAccountSender() {
         return accountSender;
     }
 
-    public void setAccountSender(String accountSender) {
+    public void setAccountSender(BigInteger accountSender) {
         this.accountSender = accountSender;
     }
 
-    public String getAccountReceiver() {
+    public BigInteger getAccountReceiver() {
         return accountReceiver;
     }
 
-    public void setAccountReceiver(String accountReceiver) {
+    public void setAccountReceiver(BigInteger accountReceiver) {
         this.accountReceiver = accountReceiver;
     }
 

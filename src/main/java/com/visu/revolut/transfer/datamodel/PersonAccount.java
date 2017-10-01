@@ -49,4 +49,15 @@ public class PersonAccount {
     public void setBillingAccounts(List<BillingAccount> billingAccounts) {
         this.billingAccounts = billingAccounts;
     }
+
+    @Override
+    public String toString() {
+        return "PersonAccount{" +
+                "accountId=" + accountId +
+                ", accountNumber=" + accountNumber +
+                ", person=" + person +
+                ", status=" + status +
+                ", billingAccounts=" + billingAccounts +
+                '}';
+    }
 }

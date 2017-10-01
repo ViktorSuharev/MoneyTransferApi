@@ -20,7 +20,7 @@ public class TransferRestApi {
     @Consumes(MediaType.APPLICATION_JSON)
     public Response transfer(TransferDetail transferDetail) {
         Transfer transfer = new Transfer(transferDetail);
-        OperationResponse result = transfer.doTransfer();
+        OperationResponse result = transfer.transfer();
         return Response.ok(result).build();
     }
 }
