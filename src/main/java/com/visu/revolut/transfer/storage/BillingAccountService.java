@@ -90,7 +90,7 @@ public class BillingAccountService {
     }
 
     private boolean isAmountEnough(BigDecimal currentSenderAmount, BigDecimal amountDif) {
-        return currentSenderAmount.compareTo(amountDif) > 0;
+        return currentSenderAmount.compareTo(amountDif) >= 0;
     }
 
     private boolean isInterExchangeOperation(BillingAccount sender, BillingAccount receiver) {
