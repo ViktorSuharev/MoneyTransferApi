@@ -15,6 +15,6 @@ public interface BillingAccountMapper {
     BigDecimal getAmountById(BigInteger id);
 
     @Update("update billing_accounts set amount=#{amount} where id=#{billingAccountId}")
-    void updateAmountById(BillingAccount billingAccountId);
+    void updateAmountById(BillingAccount billingAccountId) throws Exception;
 
 }

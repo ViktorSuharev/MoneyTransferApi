@@ -6,6 +6,7 @@ import com.visu.revolut.transfer.utils.OperationStatus;
 import com.visu.revolut.transfer.utils.ResultCode;
 import com.visu.revolut.transfer.utils.mybatis.MyBatisUtil;
 import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.TransactionIsolationLevel;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -27,7 +28,7 @@ public class BillingAccountService {
     public OperationResponse transfer(BigInteger senderBaId, BigInteger receiverBaId, BigDecimal amount) {
         logger.debug("Transfer money amount {} from {} to {}", amount, senderBaId, receiverBaId);
         OperationResponse result;
-        try (SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession()) {
+        try (SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession(TransactionIsolationLevel.REPEATABLE_READ)) {
             baMapper = sqlSession.getMapper(BillingAccountMapper.class);
 
             BillingAccount sender = baMapper.getBillingAccountById(senderBaId);
@@ -54,7 +55,7 @@ public class BillingAccountService {
         return result;
     }
 
-    private void updateAmount(BillingAccountMapper baMapper, BillingAccount account, BigDecimal amountDif) {
+    private void updateAmount(BillingAccountMapper baMapper, BillingAccount account, BigDecimal amountDif) throws Exception {
         BigDecimal currentAmount = baMapper.getAmountById(account.getBillingAccountId());
         BigDecimal updatedAmount = currentAmount.add(amountDif);
         logger.debug("BA's amount {} will be updated to {}", account.getBillingAccountId(), updatedAmount);
