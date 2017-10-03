@@ -7,7 +7,6 @@ public class PersonAccount {
     private BigInteger accountId;
     private BigInteger accountNumber;
     private Person person;
-    private AccountStatus status;
     private List<BillingAccount> billingAccounts;
 
     public BigInteger getAccountId() {
@@ -34,14 +33,6 @@ public class PersonAccount {
         this.person = person;
     }
 
-    public AccountStatus getStatus() {
-        return status;
-    }
-
-    public void setStatus(AccountStatus status) {
-        this.status = status;
-    }
-
     public List<BillingAccount> getBillingAccounts() {
         return billingAccounts;
     }
@@ -56,7 +47,6 @@ public class PersonAccount {
                 "accountId=" + accountId +
                 ", accountNumber=" + accountNumber +
                 ", person=" + person +
-                ", status=" + status +
                 ", billingAccounts=" + billingAccounts +
                 '}';
     }

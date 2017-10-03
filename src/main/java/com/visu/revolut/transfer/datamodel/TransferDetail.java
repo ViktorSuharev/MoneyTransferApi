@@ -8,6 +8,15 @@ public class TransferDetail {
     private BigInteger accountReceiver;
     private BigDecimal transferAmount;
 
+    public TransferDetail() {
+    }
+
+    public TransferDetail(BigInteger accountSender, BigInteger accountReceiver, BigDecimal transferAmount) {
+        this.accountSender = accountSender;
+        this.accountReceiver = accountReceiver;
+        this.transferAmount = transferAmount;
+    }
+
     public BigInteger getAccountSender() {
         return accountSender;
     }

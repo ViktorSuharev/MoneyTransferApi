@@ -80,10 +80,19 @@ public class BillingAccountService {
             return new OperationResponse(OperationStatus.FAIL, ResultCode.RECEIVER_ACCOUNT_NOT_EXIST);
         }
 
+        if (isInterExchangeOperation(sender, receiver)) {
+            logger.error("Inter-exchange transferring does not support yet");
+            return new OperationResponse(OperationStatus.FAIL, ResultCode.INTER_EXCHANGE_TRANSFER_NOT_SUPPORTED);
+        }
+
         return new OperationResponse();
     }
 
     private boolean isAmountEnough(BigDecimal currentSenderAmount, BigDecimal amountDif) {
         return currentSenderAmount.compareTo(amountDif) > 0;
+    }
+
+    private boolean isInterExchangeOperation(BillingAccount sender, BillingAccount receiver) {
+        return !sender.getCurrency().equals(receiver.getCurrency());
     }
 }
